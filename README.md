@@ -7,7 +7,7 @@ sequenceDiagram
     participant Nexus
 
     User->>Build Workflow: Trigger build workflow
-    Build Workflow->>BuildWorkflow: Compile code
+    Build Workflow->>Build Workflow: Compile code
     Build Workflow->>Nexus: Upload artifact
 ```
 
