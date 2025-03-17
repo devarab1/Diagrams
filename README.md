@@ -7,8 +7,12 @@ sequenceDiagram
     participant Nexus
 
     User->>Build Workflow: Trigger build workflow
+    Build Workflow->>Nexus: Download packages
     Build Workflow->>Build Workflow: Compile code
     Build Workflow->>Nexus: Upload artifact
+```
+
+```mermaid
 ```
 
 # Release
