@@ -3,12 +3,12 @@
 ```mermaid
 sequenceDiagram
     participant User
-    participant BuildWorkflow
-    participant ArtifactRepository
+    participant Build Workflow
+    participant Nexus
 
-    User->>BuildWorkflow: Trigger build workflow
-    BuildWorkflow->>BuildWorkflow: Compile code
-    BuildWorkflow->>ArtifactRepository: Upload artifact
+    User->>Build Workflow: Trigger build workflow
+    Build Workflow->>BuildWorkflow: Compile code
+    Build Workflow->>Nexus: Upload artifact
 ```
 
 # Release
@@ -16,14 +16,14 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant User
-    participant ReleaseWorkflow
+    participant Release Workflow
     participant Remedy
     participant Nexus
 
-    User->>ReleaseWorkflow: Trigger Release workflow
-    ReleaseWorkflow->>ReleaseWorkflow: Build artifacts
-    ReleaseWorkflow->>Remedy: Create CRQ in Remedy
-    ReleaseWorkflow->>Nexus: Upload artifacts into Nexus
+    User->>Release Workflow: Trigger Release workflow
+    Release Workflow->>ReleaseWorkflow: Build artifacts
+    Release Workflow->>Remedy: Create CRQ in Remedy
+    Release Workflow->>Nexus: Upload artifacts into Nexus
 ```
 
 # Deploy
@@ -31,14 +31,14 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant User
-    participant DeployWorkflow
+    participant Deploy Workflow
     participant Remedy
     participant Nexus
     participant Target
 
-    User->>DeployWorkflow: Trigger Deploy workflow
-    DeployWorkflow->>Remedy: Check for valid CRQ
-    DeployWorkflow->>Nexus: Download artifacts
-    DeployWorkflow->>Target: Deploy artifacts
-    DeployWorkflow->>Remedy: Update status of deployment
+    User->>Deploy Workflow: Trigger Deploy workflow
+    Deploy Workflow->>Remedy: Check for valid CRQ
+    Deploy Workflow->>Nexus: Download artifacts
+    Deploy Workflow->>Target: Deploy artifacts
+    Deploy Workflow->>Remedy: Update status of deployment
 ```
