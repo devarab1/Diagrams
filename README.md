@@ -26,8 +26,8 @@ sequenceDiagram
 
     User->>Release Workflow: Trigger Release workflow
     Release Workflow->>Release Workflow: Build artifacts
-    Release Workflow->>Remedy: Create CRQ in Remedy
-    Release Workflow->>Nexus: Upload artifacts into Nexus
+    Release Workflow->>Remedy: Create CRQ
+    Release Workflow->>Nexus: Upload artifacts
 ```
 
 # Deploy
