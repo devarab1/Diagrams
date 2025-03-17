@@ -6,7 +6,7 @@ sequenceDiagram
     participant Build Workflow
     participant Nexus
 
-    User->>Build Workflow: Trigger build workflow
+    User->>Build Workflow: Triggers workflow
     Build Workflow->>Nexus: Download packages
     Build Workflow->>Build Workflow: Compile code
     Build Workflow->>Nexus: Upload artifact
@@ -24,7 +24,7 @@ sequenceDiagram
     participant Remedy
     participant Nexus
 
-    User->>Release Workflow: Trigger Release workflow
+    User->>Release Workflow: Triggers workflow
     Release Workflow->>Release Workflow: Build artifacts
     Release Workflow->>Remedy: Create CRQ
     Release Workflow->>Nexus: Upload artifacts
@@ -40,7 +40,7 @@ sequenceDiagram
     participant Nexus
     participant Target
 
-    User->>Deploy Workflow: Trigger Deploy workflow
+    User->>Deploy Workflow: Triggers workflow
     Deploy Workflow->>Remedy: Check for valid CRQ
     Deploy Workflow->>Nexus: Download artifacts
     Deploy Workflow->>Target: Deploy artifacts
