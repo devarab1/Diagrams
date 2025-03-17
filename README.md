@@ -21,7 +21,7 @@ sequenceDiagram
     participant Nexus
 
     User->>Release Workflow: Trigger Release workflow
-    Release Workflow->>ReleaseWorkflow: Build artifacts
+    Release Workflow->>Release Workflow: Build artifacts
     Release Workflow->>Remedy: Create CRQ in Remedy
     Release Workflow->>Nexus: Upload artifacts into Nexus
 ```
