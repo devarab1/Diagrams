@@ -2,11 +2,11 @@
 
 ```mermaid
 sequenceDiagram
-    participant User/Event
+    participant Build Event
     participant Build Workflow
     participant Nexus
 
-    User/Event->>Build Workflow: Triggers workflow
+    Build Event->>Build Workflow: triggers
     Build Workflow->>Nexus: Download packages
     Build Workflow->>Build Workflow: Compile
     Build Workflow->>Build Workflow: Package
@@ -22,15 +22,13 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant User
+    participant Release Event
     participant Release Workflow
     participant Build Workflow
-    participant Nexus
     participant Remedy
 
-    User->>Release Workflow: Triggers workflow
+    Release Event->>Release Workflow: triggers
     Release Workflow->>Build Workflow: Call Build Workflow
-    Release Workflow->>Nexus: Upload artifacts
     Release Workflow->>Remedy: Create CRQ
 ```
 
@@ -38,13 +36,13 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant User
+    participant Deploy Event
     participant Deploy Workflow
     participant Remedy
     participant Nexus
     participant Target
 
-    User->>Deploy Workflow: Triggers workflow
+    Deploy Event->>Deploy Workflow: triggers
     Deploy Workflow->>Remedy: Check for valid CRQ
     Deploy Workflow->>Nexus: Download artifacts
     Deploy Workflow->>Target: Deploy artifacts
