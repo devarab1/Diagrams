@@ -24,15 +24,14 @@ sequenceDiagram
 sequenceDiagram
     participant User
     participant Release Workflow
-    participant Remedy
+    participant Build Workflow
     participant Nexus
+    participant Remedy
 
     User->>Release Workflow: Triggers workflow
-    Release Workflow->>Release Workflow: Compile
-    Release Workflow->>Release Workflow: Package
-    Release Workflow->>Release Workflow: Attestation
-    Release Workflow->>Remedy: Create CRQ
+    Release Workflow->>Build Workflow: Call Build Workflow
     Release Workflow->>Nexus: Upload artifacts
+    Release Workflow->>Remedy: Create CRQ
 ```
 
 # Deploy
