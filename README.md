@@ -2,11 +2,11 @@
 
 ```mermaid
 sequenceDiagram
-    participant User
+    participant User/Event
     participant Build Workflow
     participant Nexus
 
-    User->>Build Workflow: Triggers workflow
+    User/Event->>Build Workflow: Triggers workflow
     Build Workflow->>Nexus: Download packages
     Build Workflow->>Build Workflow: Compile
     Build Workflow->>Build Workflow: Package
@@ -16,9 +16,6 @@ sequenceDiagram
     else
         Build Workflow->>Build Workflow: Skip upload
     end
-```
-
-```mermaid
 ```
 
 # Release
