@@ -47,3 +47,13 @@ sequenceDiagram
     Deploy Workflow->>Target: Deploy artifacts
     Deploy Workflow->>Remedy: Update status of deployment
 ```
+
+# Workflow
+
+```mermaid
+graph LR
+    User --> Jenkins
+    Jenkins --> Sonar
+    Sonar --> Nexus
+    Nexus --> Target
+```
