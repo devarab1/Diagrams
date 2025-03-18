@@ -28,7 +28,9 @@ sequenceDiagram
     participant Nexus
 
     User->>Release Workflow: Triggers workflow
-    Release Workflow->>Release Workflow: Build artifacts
+    Release Workflow->>Release Workflow: Compile
+    Release Workflow->>Release Workflow: Package
+    Release Workflow->>Release Workflow: Attestation
     Release Workflow->>Remedy: Create CRQ
     Release Workflow->>Nexus: Upload artifacts
 ```
