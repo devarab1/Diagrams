@@ -31,9 +31,9 @@ sequenceDiagram
     participant Release Workflow
     participant Remedy
 
-    Release Event->>Build Workflow: triggers
+    Release Event->>Build Workflow: build
     Build Workflow-->>Release Event: build status
-    Release Event->>Release Workflow: triggers
+    Release Event->>Release Workflow: release
     Release Workflow->>Remedy: Create CRQ
     Release Workflow-->>Release Event: release status
 ```
