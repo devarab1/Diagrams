@@ -8,6 +8,7 @@ sequenceDiagram
 
     Build Event->>Build Workflow: triggers
     Build Workflow->>Nexus: Download packages
+    Note right of Nexus: Packages may be<br/>quarantined
     Build Workflow->>Build Workflow: Compile
     Build Workflow->>Build Workflow: Package
     alt Release Build?
