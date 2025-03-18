@@ -10,7 +10,12 @@ sequenceDiagram
     Build Workflow->>Nexus: Download packages
     Build Workflow->>Build Workflow: Compile
     Build Workflow->>Build Workflow: Package
-    Build Workflow->>Nexus: Upload artifact package
+    alt Release Build?
+        Build Workflow->>Nexus: Upload artifact package
+        Build Workflow->>Build Workflow: Generate attestation
+    else
+        Build Workflow->>Build Workflow: Skip upload
+    end
 ```
 
 ```mermaid
