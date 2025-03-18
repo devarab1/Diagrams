@@ -8,8 +8,9 @@ sequenceDiagram
 
     User->>Build Workflow: Triggers workflow
     Build Workflow->>Nexus: Download packages
-    Build Workflow->>Build Workflow: Compile code
-    Build Workflow->>Nexus: Upload artifact
+    Build Workflow->>Build Workflow: Compile
+    Build Workflow->>Build Workflow: Package
+    Build Workflow->>Nexus: Upload artifact package
 ```
 
 ```mermaid
