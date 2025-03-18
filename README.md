@@ -2,11 +2,12 @@
 
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Build Event
     participant Build Workflow
     participant Nexus
 
-    Build Event->>Build Workflow: triggers
+    Build Event->>Build Workflow: build
     Build Workflow->>Nexus: Download packages
     Note right of Nexus: Packages may be<br/>quarantined
     Build Workflow->>Build Workflow: Compile
@@ -17,26 +18,31 @@ sequenceDiagram
     else
         Build Workflow->>Build Workflow: Skip upload
     end
+    Build Workflow-->>Build Event: build status
 ```
 
 # Release
 
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Release Event
-    participant Release Workflow
     participant Build Workflow
+    participant Release Workflow
     participant Remedy
 
+    Release Event->>Build Workflow: triggers
+    Build Workflow-->>Release Event: build status
     Release Event->>Release Workflow: triggers
-    Release Workflow->>Build Workflow: Call Build Workflow
     Release Workflow->>Remedy: Create CRQ
+    Release Workflow-->>Release Event: release status
 ```
 
 # Deploy
 
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Deploy Event
     participant Deploy Workflow
     participant Remedy
@@ -45,9 +51,13 @@ sequenceDiagram
 
     Deploy Event->>Deploy Workflow: triggers
     Deploy Workflow->>Remedy: Check for valid CRQ
+    Remedy-->>Deploy Workflow: CRQ status
     Deploy Workflow->>Nexus: Download artifacts
+    Nexus-->>Deploy Workflow: artifacts
     Deploy Workflow->>Target: Deploy artifacts
-    Deploy Workflow->>Remedy: Update status of deployment
+    Target-->>Deploy Workflow: deploy status
+    Deploy Workflow->>Remedy: Update CRQ status
+    Deploy Workflow-->>Deploy Event: deploy status
 ```
 
 # Workflow
