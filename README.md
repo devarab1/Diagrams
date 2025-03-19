@@ -64,7 +64,7 @@ sequenceDiagram
 
 ```mermaid
 graph LR
-    User --> GitHub Actions
+    User --> GHA
     Jenkins --> Sonar
     Sonar --> Nexus
     Nexus --> Target
